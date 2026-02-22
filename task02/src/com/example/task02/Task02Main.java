@@ -16,7 +16,14 @@ public class Task02Main {
 
     public static IntStream cycleGrayCode(int n) {
 
-        return null; // your implementation here
+        if (n < 1 || n > 16) {
+            throw new IllegalArgumentException();
+        }
+
+
+
+        return IntStream.iterate(0, i -> (int) ((i+1) % Math.pow(2,n)))
+                .map(i -> i ^ (i>>1));
 
     }
 
